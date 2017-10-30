@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_orange"
+            android:title="Beranda" />
+        <item
+            android:id="@+id/nav_transaction"
+            android:icon="@drawable/ic_money_orange"
+            android:title="Riwayat Transaksi" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_setting_orange"
+            android:title="Pengaturan" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_back_orange"
+            android:title="Keluar" />
+    </group>
+
+</menu>
