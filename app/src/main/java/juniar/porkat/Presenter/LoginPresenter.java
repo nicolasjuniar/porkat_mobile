@@ -25,11 +25,11 @@ public class LoginPresenter {
     public LoginPresenter(LoginView listener, PreferenceHelper preferences) {
         this.listener = listener;
         this.preferences=preferences;
+        service= NetworkConfig.createService(LoginAPI.class);
     }
 
     public void login(String username, String password)
     {
-        service= NetworkConfig.createService(LoginAPI.class);
         callResponse=service.login(username,password);
         callResponse.enqueue(new Callback<LoginResponse>() {
             @Override

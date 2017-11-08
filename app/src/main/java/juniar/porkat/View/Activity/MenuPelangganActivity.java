@@ -1,9 +1,12 @@
 package juniar.porkat.View.Activity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -14,6 +17,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -29,19 +33,23 @@ import juniar.porkat.Utils.PreferenceHelper;
 import juniar.porkat.View.Fragment.SettingFragment;
 import juniar.porkat.View.Fragment.HomeFragment;
 import juniar.porkat.View.Fragment.TransactionHistoryFragment;
+import juniar.porkat.View.Interface.MenuPelangganView;
 
 public class MenuPelangganActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,MenuPelangganView {
 
     TextView tv_fullname,tv_username,tv_role;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.nav_view)
+    NavigationView navigationView;
+
+    Context context;
 
     private boolean exit=false;
     private PreferenceHelper preferences;
     private FragmentManager fragmentManager;
-    private FragmentManager fragmentManager1;
     private FragmentTransaction fragmentTransaction;
 
     @Override
@@ -53,7 +61,7 @@ public class MenuPelangganActivity extends AppCompatActivity
 
         setTitleActionBar("Beranda");
 
-        preferences=PreferenceHelper.getInstance(this);
+        preferences=PreferenceHelper.getInstance(getApplicationContext());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -61,7 +69,8 @@ public class MenuPelangganActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        context=this;
+
         View view=navigationView.getHeaderView(0);
         tv_fullname=ButterKnife.findById(view,R.id.tv_fullname);
         tv_username=ButterKnife.findById(view,R.id.tv_username);
@@ -118,17 +127,24 @@ public class MenuPelangganActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
+
+        int n=0;
+
         Fragment fragment=null;
         if (id == R.id.nav_home) {
+            n=0;
             setTitleActionBar("Beranda");
             fragment=new HomeFragment();
         } else if (id == R.id.nav_transaction) {
+            n=1;
             setTitleActionBar("Transaksi");
             fragment=new TransactionHistoryFragment();
         } else if (id == R.id.nav_setting) {
+            n=2;
             setTitleActionBar("Pengaturan");
             fragment=new SettingFragment();
         } else if (id == R.id.nav_logout) {
+            navigationView.getMenu().getItem(n).setChecked(true);
             new AlertDialog.Builder(this)
                     .setTitle("Keluar")
                     .setMessage("Apa anda yakin ingin Keluar?")
@@ -142,7 +158,6 @@ public class MenuPelangganActivity extends AppCompatActivity
                     .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-
                         }
                     })
                     .setIcon(android.R.drawable.ic_dialog_alert)
@@ -157,5 +172,10 @@ public class MenuPelangganActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onUpdateProfile(String nama_lengkap) {
+        tv_fullname.setText(nama_lengkap);
     }
 }

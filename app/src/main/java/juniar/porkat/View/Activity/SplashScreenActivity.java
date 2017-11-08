@@ -22,7 +22,7 @@ public class SplashScreenActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
 
-        preferences=PreferenceHelper.getInstance(this);
+        preferences=PreferenceHelper.getInstance(getApplicationContext());
 
         Thread logoTimer = new Thread() {
             public void run() {

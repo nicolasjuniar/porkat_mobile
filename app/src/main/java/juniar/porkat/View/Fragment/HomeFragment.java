@@ -40,6 +40,5 @@ public class HomeFragment extends Fragment{
         adapter.addFragment(new KateringByRatingFragment(), "Rekomendasi");
         adapter.addFragment(new KateringByDistanceFragment(), "Sekitar");
         viewPager.setAdapter(adapter);
-
     }
 }

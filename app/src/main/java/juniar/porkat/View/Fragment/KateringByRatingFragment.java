@@ -28,7 +28,7 @@ import juniar.porkat.View.Interface.ListKateringView;
 public class KateringByRatingFragment extends Fragment implements ListKateringView{
 
     @BindView(R.id.swipe_refresh_layout)
-    SwipeRefreshLayout swipe_referesh_layout;
+    SwipeRefreshLayout swipe_refresh_layout;
     @BindView(R.id.adapter_kateringbyrating)
     RecyclerView adapter_kateringbyrating;
     @BindView(R.id.progressBar)
@@ -45,7 +45,7 @@ public class KateringByRatingFragment extends Fragment implements ListKateringVi
         progressBar.setVisibility(View.VISIBLE);
         presenter.getListKateringByRating();
 
-        swipe_referesh_layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        swipe_refresh_layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 presenter.getListKateringByRating();
@@ -57,7 +57,7 @@ public class KateringByRatingFragment extends Fragment implements ListKateringVi
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 int topRowVerticalPosition =
                         (recyclerView == null || recyclerView.getChildCount() == 0) ? 0 : recyclerView.getChildAt(0).getTop();
-                swipe_referesh_layout.setEnabled(topRowVerticalPosition >= 0);
+                swipe_refresh_layout.setEnabled(topRowVerticalPosition >= 0);
             }
         });
 
@@ -72,11 +72,13 @@ public class KateringByRatingFragment extends Fragment implements ListKateringVi
             adapter_kateringbyrating.setAdapter(adapter);
             adapter_kateringbyrating.setLayoutManager(new LinearLayoutManager(getActivity()));
             progressBar.setVisibility(View.GONE);
-            swipe_referesh_layout.setRefreshing(false);
+            swipe_refresh_layout.setRefreshing(false);
         }
         else
         {
             Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+            swipe_refresh_layout.setRefreshing(false);
         }
     }
 }

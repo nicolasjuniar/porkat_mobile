@@ -46,10 +46,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        preferences=PreferenceHelper.getInstance(this);
+        preferences=PreferenceHelper.getInstance(getApplicationContext());
 
-        setDrawableTint(R.drawable.ic_password_orange, ContextCompat.getColor(this, R.color.colorPrimary));
-        setDrawableTint(R.drawable.ic_username_orange, ContextCompat.getColor(this, R.color.colorPrimary));
+        setDrawableTint(R.drawable.ic_password, ContextCompat.getColor(this, R.color.colorPrimary));
+        setDrawableTint(R.drawable.ic_username, ContextCompat.getColor(this, R.color.colorPrimary));
 
         presenter=new LoginPresenter(this,preferences);
 

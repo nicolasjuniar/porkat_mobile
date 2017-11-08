@@ -37,16 +37,19 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".View.Activity.RegisterActivity"
-            android:label="Halaman Pendaftaran"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View.Activity.MenuPelangganActivity"
             android:label="@string/title_activity_menu_pelanggan"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View.Activity.DetailKateringActivity"
-            android:label="@string/title_activity_detail_katering"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.Activity.ChangePasswordActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".View.Activity.EditProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

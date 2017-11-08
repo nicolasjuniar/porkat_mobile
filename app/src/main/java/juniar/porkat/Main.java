@@ -8,7 +8,8 @@ import android.app.Application;
 
 public class Main extends Application {
 
-    public static String base_url="http://192.168.43.251/porkat_web/";
+    //public static String base_url="http://192.168.43.251/porkat_web/"; ///localhost
+    public static String base_url="http://services.iterasi.id/porkat_web/"; //hendri punya
 
     @Override
     public void onCreate() {

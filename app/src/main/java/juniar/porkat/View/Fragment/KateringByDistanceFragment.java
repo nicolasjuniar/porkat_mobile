@@ -21,7 +21,6 @@ public class KateringByDistanceFragment extends Fragment implements ListKatering
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_kateringbydistance, container, false);
-
         return view;
     }
 

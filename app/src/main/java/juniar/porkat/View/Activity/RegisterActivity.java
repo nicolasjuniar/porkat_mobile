@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,6 +38,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     EditText et_address;
     @BindView(R.id.bt_register)
     Button bt_register;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     RegisterPresenter presenter;
     private ProgressDialog progressDialog;
@@ -47,13 +50,23 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
         setContentView(R.layout.activity_registerpelanggan);
         ButterKnife.bind(this);
 
+        setSupportActionBar(toolbar);
+        setTitleActionBar("Halaman Pendaftaran");
+
         presenter=new RegisterPresenter(this);
 
-        setDrawableTint(R.drawable.ic_username_orange, ContextCompat.getColor(this, R.color.colorPrimary));
-        setDrawableTint(R.drawable.ic_password_orange, ContextCompat.getColor(this, R.color.colorPrimary));
-        setDrawableTint(R.drawable.ic_home_orange, ContextCompat.getColor(this, R.color.colorPrimary));
-        setDrawableTint(R.drawable.ic_fullname_orange, ContextCompat.getColor(this, R.color.colorPrimary));
-        setDrawableTint(R.drawable.ic_contact_orange, ContextCompat.getColor(this, R.color.colorPrimary));
+        setDrawableTint(R.drawable.ic_username, ContextCompat.getColor(this, R.color.colorPrimary));
+        setDrawableTint(R.drawable.ic_password, ContextCompat.getColor(this, R.color.colorPrimary));
+        setDrawableTint(R.drawable.ic_home, ContextCompat.getColor(this, R.color.colorPrimary));
+        setDrawableTint(R.drawable.ic_fullname, ContextCompat.getColor(this, R.color.colorPrimary));
+        setDrawableTint(R.drawable.ic_contact, ContextCompat.getColor(this, R.color.colorPrimary));
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         bt_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +85,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
                 }
             }
         });
+    }
+
+    public void setTitleActionBar(String title)
+    {
+        getSupportActionBar().setTitle(title);
     }
 
     public boolean checkInput()

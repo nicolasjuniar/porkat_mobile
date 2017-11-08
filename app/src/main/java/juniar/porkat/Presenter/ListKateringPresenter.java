@@ -19,11 +19,11 @@ public class ListKateringPresenter {
 
     public ListKateringPresenter(ListKateringView listener) {
         this.listener = listener;
+        service= NetworkConfig.createService(ListKateringAPI.class);
     }
 
     public void getListKateringByRating()
     {
-        service= NetworkConfig.createService(ListKateringAPI.class);
         callResponse=service.GetListKatering();
         callResponse.enqueue(new Callback<ListKateringResponse>() {
             @Override

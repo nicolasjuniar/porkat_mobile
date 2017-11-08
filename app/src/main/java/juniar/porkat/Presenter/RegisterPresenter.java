@@ -20,11 +20,11 @@ public class RegisterPresenter {
 
     public RegisterPresenter(RegisterView listener) {
         this.listener = listener;
+        service= NetworkConfig.createService(RegisterAPI.class);
     }
 
     public void register(String id_pengguna,String katasandi,String no_telp,String nama_lengkap,String alamat)
     {
-        service= NetworkConfig.createService(RegisterAPI.class);
         callResponse=service.register(id_pengguna, katasandi, no_telp, nama_lengkap, alamat);
         callResponse.enqueue(new Callback<RegisterResponse>() {
             @Override
