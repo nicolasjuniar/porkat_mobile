@@ -3,22 +3,18 @@ package juniar.porkat.View.Fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import juniar.porkat.R;
 import juniar.porkat.View.Activity.ChangePasswordActivity;
 import juniar.porkat.View.Activity.EditProfileActivity;
-import juniar.porkat.View.Activity.MenuPelangganActivity;
-import juniar.porkat.View.Interface.MenuPelangganView;
+import juniar.porkat.View.Interface.MenuPelangganListener;
 
 /**
  * Created by Nicolas Juniar on 26/10/2017.
@@ -26,12 +22,12 @@ import juniar.porkat.View.Interface.MenuPelangganView;
 
 public class SettingFragment extends Fragment {
 
-    @BindView(R.id.editprofile)
-    CardView editprofile;
-    @BindView(R.id.changepassword)
-    CardView changepassword;
+    @BindView(R.id.cv_editprofile)
+    CardView cv_editprofile;
+    @BindView(R.id.cv_changepassword)
+    CardView cv_changepassword;
 
-    MenuPelangganView listener;
+    MenuPelangganListener listener;
 
     @Override
     public void onAttach(Activity activity) {
@@ -40,7 +36,7 @@ public class SettingFragment extends Fragment {
         // This makes sure that the container activity has implemented
         // the callback interface. If not, it throws an exception
         try {
-            listener = (MenuPelangganView ) activity;
+            listener = (MenuPelangganListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement listener ");
@@ -53,7 +49,7 @@ public class SettingFragment extends Fragment {
 
         ButterKnife.bind(this,view);
 
-        editprofile.setOnClickListener(new View.OnClickListener() {
+        cv_editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getActivity(),EditProfileActivity.class);
@@ -61,7 +57,7 @@ public class SettingFragment extends Fragment {
             }
         });
 
-        changepassword.setOnClickListener(new View.OnClickListener() {
+        cv_changepassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(),ChangePasswordActivity.class));

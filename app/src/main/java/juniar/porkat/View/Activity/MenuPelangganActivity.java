@@ -1,12 +1,9 @@
 package juniar.porkat.View.Activity;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -17,7 +14,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -33,10 +29,10 @@ import juniar.porkat.Utils.PreferenceHelper;
 import juniar.porkat.View.Fragment.SettingFragment;
 import juniar.porkat.View.Fragment.HomeFragment;
 import juniar.porkat.View.Fragment.TransactionHistoryFragment;
-import juniar.porkat.View.Interface.MenuPelangganView;
+import juniar.porkat.View.Interface.MenuPelangganListener;
 
 public class MenuPelangganActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,MenuPelangganView {
+        implements NavigationView.OnNavigationItemSelectedListener,MenuPelangganListener {
 
     TextView tv_fullname,tv_username,tv_role;
 
@@ -45,12 +41,15 @@ public class MenuPelangganActivity extends AppCompatActivity
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
-    Context context;
 
     private boolean exit=false;
     private PreferenceHelper preferences;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
+
+    HomeFragment homeFragment;
+    TransactionHistoryFragment transactionHistoryFragment;
+    SettingFragment settingFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +68,6 @@ public class MenuPelangganActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        context=this;
-
         View view=navigationView.getHeaderView(0);
         tv_fullname=ButterKnife.findById(view,R.id.tv_fullname);
         tv_username=ButterKnife.findById(view,R.id.tv_username);
@@ -80,7 +77,11 @@ public class MenuPelangganActivity extends AppCompatActivity
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.container_body, new HomeFragment()).commit();
+        if(homeFragment==null)
+        {
+            homeFragment=new HomeFragment();
+        }
+        fragmentTransaction.replace(R.id.container_body,homeFragment).commit();
 
         navigationView.getMenu().getItem(0).setChecked(true);
 
@@ -128,23 +129,30 @@ public class MenuPelangganActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        int n=0;
-
         Fragment fragment=null;
         if (id == R.id.nav_home) {
-            n=0;
+
             setTitleActionBar("Beranda");
-            fragment=new HomeFragment();
+            if(homeFragment==null)
+            {
+                homeFragment=new HomeFragment();
+            }
+            fragment=homeFragment;
         } else if (id == R.id.nav_transaction) {
-            n=1;
             setTitleActionBar("Transaksi");
-            fragment=new TransactionHistoryFragment();
+            if(transactionHistoryFragment==null)
+            {
+                transactionHistoryFragment=new TransactionHistoryFragment();
+            }
+            fragment=transactionHistoryFragment;
         } else if (id == R.id.nav_setting) {
-            n=2;
             setTitleActionBar("Pengaturan");
-            fragment=new SettingFragment();
+            if(settingFragment==null)
+            {
+                settingFragment=new SettingFragment();
+            }
+            fragment=settingFragment;
         } else if (id == R.id.nav_logout) {
-            navigationView.getMenu().getItem(n).setChecked(true);
             new AlertDialog.Builder(this)
                     .setTitle("Keluar")
                     .setMessage("Apa anda yakin ingin Keluar?")
@@ -165,7 +173,7 @@ public class MenuPelangganActivity extends AppCompatActivity
         }
 
         if(fragment!=null) {
-            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction=fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_body, fragment).commit();
         }
 

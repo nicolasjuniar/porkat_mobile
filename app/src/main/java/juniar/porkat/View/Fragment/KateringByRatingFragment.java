@@ -19,31 +19,36 @@ import juniar.porkat.Model.KateringModel;
 import juniar.porkat.Presenter.ListKateringPresenter;
 import juniar.porkat.R;
 import juniar.porkat.View.Adapter.AdapterListKatering;
-import juniar.porkat.View.Interface.ListKateringView;
+import juniar.porkat.View.Interface.ListKateringListener;
 
 /**
  * Created by Nicolas Juniar on 30/10/2017.
  */
 
-public class KateringByRatingFragment extends Fragment implements ListKateringView{
+public class KateringByRatingFragment extends Fragment implements ListKateringListener {
 
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipe_refresh_layout;
-    @BindView(R.id.adapter_kateringbyrating)
-    RecyclerView adapter_kateringbyrating;
+    @BindView(R.id.rv_kateringbyrating)
+    RecyclerView rv_kateringbyrating;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
     AdapterListKatering adapter;
     ListKateringPresenter presenter;
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_kateringbyrating, container, false);
-        ButterKnife.bind(this,view);
+    private View view;
 
-        presenter=new ListKateringPresenter(this);
-        progressBar.setVisibility(View.VISIBLE);
-        presenter.getListKateringByRating();
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if(view==null)
+        {
+            view = inflater.inflate(R.layout.fragment_kateringbyrating, container, false);
+            presenter=new ListKateringPresenter(this);
+            presenter.getListKateringByRating();
+        }
+
+        ButterKnife.bind(this,view);
 
         swipe_refresh_layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -52,7 +57,7 @@ public class KateringByRatingFragment extends Fragment implements ListKateringVi
             }
         });
 
-        adapter_kateringbyrating.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        rv_kateringbyrating.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 int topRowVerticalPosition =
@@ -69,8 +74,8 @@ public class KateringByRatingFragment extends Fragment implements ListKateringVi
         if(!error)
         {
             adapter=new AdapterListKatering(ListKatering,getActivity());
-            adapter_kateringbyrating.setAdapter(adapter);
-            adapter_kateringbyrating.setLayoutManager(new LinearLayoutManager(getActivity()));
+            rv_kateringbyrating.setAdapter(adapter);
+            rv_kateringbyrating.setLayoutManager(new LinearLayoutManager(getActivity()));
             progressBar.setVisibility(View.GONE);
             swipe_refresh_layout.setRefreshing(false);
         }

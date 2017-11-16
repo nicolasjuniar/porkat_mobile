@@ -3,7 +3,7 @@ package juniar.porkat.Presenter;
 import juniar.porkat.API.ListKateringAPI;
 import juniar.porkat.Model.ListKateringResponse;
 import juniar.porkat.Utils.NetworkConfig;
-import juniar.porkat.View.Interface.ListKateringView;
+import juniar.porkat.View.Interface.ListKateringListener;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -13,11 +13,11 @@ import retrofit2.Response;
  */
 
 public class ListKateringPresenter {
-    ListKateringView listener;
+    ListKateringListener listener;
     ListKateringAPI service;
     Call<ListKateringResponse> callResponse;
 
-    public ListKateringPresenter(ListKateringView listener) {
+    public ListKateringPresenter(ListKateringListener listener) {
         this.listener = listener;
         service= NetworkConfig.createService(ListKateringAPI.class);
     }

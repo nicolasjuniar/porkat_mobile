@@ -10,13 +10,13 @@ import java.util.ArrayList;
 
 import juniar.porkat.Model.KateringModel;
 import juniar.porkat.R;
-import juniar.porkat.View.Interface.ListKateringView;
+import juniar.porkat.View.Interface.ListKateringListener;
 
 /**
  * Created by Nicolas Juniar on 30/10/2017.
  */
 
-public class KateringByDistanceFragment extends Fragment implements ListKateringView {
+public class KateringByDistanceFragment extends Fragment implements ListKateringListener {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

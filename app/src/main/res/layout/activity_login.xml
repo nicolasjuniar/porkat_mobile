@@ -58,7 +58,7 @@
             android:layout_marginRight="30dp"
             android:textSize="20sp"
             android:text="Masuk"
-            android:id="@+id/bt_login"
+            android:id="@+id/btn_login"
             android:textAllCaps="false"
             android:background="@color/colorPrimary"
             android:textColor="@color/White"/>

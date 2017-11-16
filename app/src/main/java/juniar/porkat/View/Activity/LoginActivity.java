@@ -19,19 +19,19 @@ import butterknife.ButterKnife;
 import juniar.porkat.Presenter.LoginPresenter;
 import juniar.porkat.R;
 import juniar.porkat.Utils.PreferenceHelper;
-import juniar.porkat.View.Interface.LoginView;
+import juniar.porkat.View.Interface.LoginListener;
 
 /**
  * Created by Nicolas Juniar on 16/10/2017.
  */
 
-public class LoginActivity extends AppCompatActivity implements LoginView {
+public class LoginActivity extends AppCompatActivity implements LoginListener {
     @BindView(R.id.et_username)
     EditText et_username;
     @BindView(R.id.et_password)
     EditText et_password;
-    @BindView(R.id.bt_login)
-    Button bt_login;
+    @BindView(R.id.btn_login)
+    Button btn_login;
     @BindView(R.id.tv_register)
     TextView tv_register;
 
@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
         presenter=new LoginPresenter(this,preferences);
 
-        bt_login.setOnClickListener(new View.OnClickListener() {
+        btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 clearError();
@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         tv_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+                startActivity(new Intent(LoginActivity.this,RegisterPelangganActivity.class));
             }
         });
     }

@@ -22,7 +22,9 @@ import com.squareup.picasso.Target;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import juniar.porkat.Model.KateringModel;
+import juniar.porkat.Model.PelangganModel;
 import juniar.porkat.R;
+import juniar.porkat.Utils.PreferenceHelper;
 import juniar.porkat.Utils.ViewPagerAdapter;
 import juniar.porkat.View.Fragment.DeskripsiFragment;
 import juniar.porkat.View.Fragment.KateringByDistanceFragment;
@@ -45,6 +47,8 @@ public class DetailKateringActivity extends AppCompatActivity {
 
     private Bundle bundle;
     private KateringModel katering;
+    PelangganModel pelanggan;
+    PreferenceHelper preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,8 @@ public class DetailKateringActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         setTitleActionBar("Detail Katering");
 
+        preferences=PreferenceHelper.getInstance(getApplicationContext());
+        pelanggan=new Gson().fromJson(preferences.getString("profile_pelanggan",""),PelangganModel.class);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,13 +93,16 @@ public class DetailKateringActivity extends AppCompatActivity {
 
         DeskripsiFragment deskripsiFragment=new DeskripsiFragment();
         MenuFragment menuFragment=new MenuFragment();
+        UlasanFragment ulasanFragment=new UlasanFragment();
         bundle.putInt("id_katering",katering.getId_katering());
+        bundle.putInt("id_pelanggan",pelanggan.getId_pelanggan());
         deskripsiFragment.setArguments(bundle);
         menuFragment.setArguments(bundle);
+        ulasanFragment.setArguments(bundle);
 
         adapter.addFragment(deskripsiFragment,"Deskripsi");
         adapter.addFragment(menuFragment, "Menu");
-        adapter.addFragment(new UlasanFragment(), "Ulasan");
+        adapter.addFragment(ulasanFragment, "Ulasan");
         viewPager.setAdapter(adapter);
     }
 }

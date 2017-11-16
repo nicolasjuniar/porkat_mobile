@@ -13,9 +13,18 @@ import retrofit2.http.POST;
 public interface RegisterAPI {
     @FormUrlEncoded
     @POST("pelanggan/register")
-    Call<RegisterResponse> register(@Field("id_pengguna") String id_pengguna,
-                                    @Field("katasandi") String katasandi,
-                                    @Field("no_telp") String no_telp,
-                                    @Field("nama_lengkap") String nama_lengkap,
-                                    @Field("alamat") String alamat);
+    Call<RegisterResponse> registerPelanggan(@Field("id_pengguna") String id_pengguna,
+                                             @Field("katasandi") String katasandi,
+                                             @Field("no_telp") String no_telp,
+                                             @Field("nama_lengkap") String nama_lengkap,
+                                             @Field("alamat") String alamat);
+
+    @FormUrlEncoded
+    @POST("katering/register")
+    Call<RegisterResponse> registerKatering(@Field("id_pengguna") String id_pengguna,
+                                            @Field("katasandi") String katasandi,
+                                            @Field("nama_katering") String nama_katering,
+                                            @Field("no_telp") String no_telp,
+                                            @Field("alamat") String alamat,
+                                            @Field("no_verifikasi") String no_verifikasi);
 }

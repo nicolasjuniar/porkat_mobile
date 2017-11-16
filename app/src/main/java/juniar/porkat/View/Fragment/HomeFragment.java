@@ -23,11 +23,23 @@ public class HomeFragment extends Fragment{
     TabLayout tab_layout;
     @BindView(R.id.viewpager)
     ViewPager viewpager;
+    KateringByRatingFragment kateringByRatingFragment;
+    KateringByDistanceFragment kateringByDistanceFragment;
+
+    private View view;
+    boolean cek=false;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_home, container, false);
+        view = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this,view);
+
+        if(!cek)
+        {
+            kateringByDistanceFragment=new KateringByDistanceFragment();
+            kateringByRatingFragment=new KateringByRatingFragment();
+            cek=true;
+        }
 
         setupViewPager(viewpager);
         tab_layout.setupWithViewPager(viewpager);
@@ -37,8 +49,8 @@ public class HomeFragment extends Fragment{
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(new KateringByRatingFragment(), "Rekomendasi");
-        adapter.addFragment(new KateringByDistanceFragment(), "Sekitar");
+        adapter.addFragment(kateringByRatingFragment, "Rekomendasi");
+        adapter.addFragment(kateringByDistanceFragment, "Sekitar");
         viewPager.setAdapter(adapter);
     }
 }

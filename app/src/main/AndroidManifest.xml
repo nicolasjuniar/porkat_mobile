@@ -36,7 +36,7 @@
             android:label="Halaman Masuk"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".View.Activity.RegisterActivity"
+            android:name=".View.Activity.RegisterPelangganActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View.Activity.MenuPelangganActivity"
@@ -50,6 +50,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".View.Activity.EditProfileActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".View.Activity.MenuKateringActivity"/>
     </application>
 
 </manifest>

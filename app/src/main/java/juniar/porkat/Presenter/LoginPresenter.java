@@ -6,7 +6,7 @@ import juniar.porkat.API.LoginAPI;
 import juniar.porkat.Model.LoginResponse;
 import juniar.porkat.Utils.NetworkConfig;
 import juniar.porkat.Utils.PreferenceHelper;
-import juniar.porkat.View.Interface.LoginView;
+import juniar.porkat.View.Interface.LoginListener;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,10 +19,10 @@ public class LoginPresenter {
     LoginAPI service;
     Call<LoginResponse> callResponse;
 
-    LoginView listener;
+    LoginListener listener;
     PreferenceHelper preferences;
 
-    public LoginPresenter(LoginView listener, PreferenceHelper preferences) {
+    public LoginPresenter(LoginListener listener, PreferenceHelper preferences) {
         this.listener = listener;
         this.preferences=preferences;
         service= NetworkConfig.createService(LoginAPI.class);
