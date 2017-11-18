@@ -3,6 +3,8 @@ package juniar.porkat.Presenter;
 import com.google.gson.Gson;
 
 import juniar.porkat.API.RegisterAPI;
+import juniar.porkat.Model.RegisterKateringRequest;
+import juniar.porkat.Model.RegisterPelangganRequest;
 import juniar.porkat.Model.RegisterResponse;
 import juniar.porkat.Utils.NetworkConfig;
 import juniar.porkat.Utils.PreferenceHelper;
@@ -28,9 +30,9 @@ public class RegisterPresenter {
         service= NetworkConfig.createService(RegisterAPI.class);
     }
 
-    public void registerPelanggan(String id_pengguna, String katasandi, String no_telp, String nama_lengkap, String alamat)
+    public void registerPelanggan(RegisterPelangganRequest requestBody)
     {
-        callResponse=service.registerPelanggan(id_pengguna, katasandi, no_telp, nama_lengkap, alamat);
+        callResponse=service.registerPelanggan(requestBody);
         callResponse.enqueue(new Callback<RegisterResponse>() {
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
@@ -46,9 +48,9 @@ public class RegisterPresenter {
         });
     }
 
-    public void registerKatering(String id_pengguna,String katasandi,String nama_katering,String no_telp,String alamat,String no_verifikasi)
+    public void registerKatering(RegisterKateringRequest requestBody)
     {
-        callResponse=service.registerKatering(id_pengguna, katasandi, nama_katering, no_telp, alamat, no_verifikasi);
+        callResponse=service.registerKatering(requestBody);
         callResponse.enqueue(new Callback<RegisterResponse>() {
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
