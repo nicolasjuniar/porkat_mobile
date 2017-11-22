@@ -12,7 +12,7 @@ public class Main extends Application {
 
     public static String base_url="http://192.168.43.251/porkat_web/"; ///localhost
 //    public static String base_url="http://services.iterasi.id/porkat_web/"; //hendri punya
-//    public static String base_url="http://192.168.10.8/porkat_web/";
+//    public static String base_url="http://192.168.100.19/porkat_web/";
 
     @Override
     public void onCreate() {

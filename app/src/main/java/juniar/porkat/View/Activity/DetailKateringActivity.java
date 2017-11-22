@@ -96,6 +96,7 @@ public class DetailKateringActivity extends AppCompatActivity {
         UlasanFragment ulasanFragment=new UlasanFragment();
         bundle.putInt("id_katering",katering.getId_katering());
         bundle.putInt("id_pelanggan",pelanggan.getId_pelanggan());
+        bundle.putString("nama_lengkap",pelanggan.getNama_lengkap());
         deskripsiFragment.setArguments(bundle);
         menuFragment.setArguments(bundle);
         ulasanFragment.setArguments(bundle);
