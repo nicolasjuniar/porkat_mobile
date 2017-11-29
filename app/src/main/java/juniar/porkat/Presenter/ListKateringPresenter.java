@@ -24,7 +24,23 @@ public class ListKateringPresenter {
 
     public void getListKateringByRating()
     {
-        callResponse=service.GetListKatering();
+        callResponse=service.GetListKateringByRating();
+        callResponse.enqueue(new Callback<ListKateringResponse>() {
+            @Override
+            public void onResponse(Call<ListKateringResponse> call, Response<ListKateringResponse> response) {
+                listener.onGetListKateringResponse(false,response.body().getListkatering(),null);
+            }
+
+            @Override
+            public void onFailure(Call<ListKateringResponse> call, Throwable t) {
+                listener.onGetListKateringResponse(true,null,t);
+            }
+        });
+    }
+
+    public void getListKateringByDistance(double latitude,double longitude)
+    {
+        callResponse=service.GetListKateringByDistance(latitude,longitude);
         callResponse.enqueue(new Callback<ListKateringResponse>() {
             @Override
             public void onResponse(Call<ListKateringResponse> call, Response<ListKateringResponse> response) {

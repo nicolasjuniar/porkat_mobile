@@ -86,6 +86,7 @@ public class MenuPelangganActivity extends AppCompatActivity
         navigationView.getMenu().getItem(0).setChecked(true);
 
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     public void setTitleActionBar(String title)
@@ -159,7 +160,7 @@ public class MenuPelangganActivity extends AppCompatActivity
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             preferences.putBoolean("session",false);
-                            startActivity(new Intent(MenuPelangganActivity.this,LoginActivity.class));
+                            startActivity(new Intent(MenuPelangganActivity.this,HomeActivity.class));
                             finish();
                         }
                     })

@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 import juniar.porkat.Model.KateringModel;
 import juniar.porkat.Presenter.ListKateringPresenter;
 import juniar.porkat.R;
+import juniar.porkat.Utils.PreferenceHelper;
 import juniar.porkat.View.Adapter.AdapterListKatering;
 import juniar.porkat.View.Interface.ListKateringListener;
 
@@ -29,13 +30,14 @@ public class KateringByRatingFragment extends Fragment implements ListKateringLi
 
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipe_refresh_layout;
-    @BindView(R.id.rv_kateringbyrating)
-    RecyclerView rv_kateringbyrating;
+    @BindView(R.id.rv_katering)
+    RecyclerView rv_katering;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
     AdapterListKatering adapter;
     ListKateringPresenter presenter;
+    PreferenceHelper preferences;
 
     private View view;
 
@@ -46,6 +48,7 @@ public class KateringByRatingFragment extends Fragment implements ListKateringLi
             view = inflater.inflate(R.layout.fragment_kateringbyrating, container, false);
             presenter=new ListKateringPresenter(this);
             presenter.getListKateringByRating();
+            preferences=PreferenceHelper.getInstance(getContext());
         }
 
         ButterKnife.bind(this,view);
@@ -57,7 +60,7 @@ public class KateringByRatingFragment extends Fragment implements ListKateringLi
             }
         });
 
-        rv_kateringbyrating.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        rv_katering.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 int topRowVerticalPosition =
@@ -69,13 +72,15 @@ public class KateringByRatingFragment extends Fragment implements ListKateringLi
         return view;
     }
 
+
+
     @Override
     public void onGetListKateringResponse(boolean error, ArrayList<KateringModel> ListKatering, Throwable t) {
         if(!error)
         {
-            adapter=new AdapterListKatering(ListKatering,getActivity());
-            rv_kateringbyrating.setAdapter(adapter);
-            rv_kateringbyrating.setLayoutManager(new LinearLayoutManager(getActivity()));
+            adapter=new AdapterListKatering(ListKatering,getActivity(),preferences);
+            rv_katering.setAdapter(adapter);
+            rv_katering.setLayoutManager(new LinearLayoutManager(getActivity()));
             progressBar.setVisibility(View.GONE);
             swipe_refresh_layout.setRefreshing(false);
         }

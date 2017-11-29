@@ -2,6 +2,7 @@ package juniar.porkat.View.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import juniar.porkat.Model.KateringModel;
 import juniar.porkat.R;
+import juniar.porkat.Utils.PreferenceHelper;
 import juniar.porkat.View.Activity.DetailKateringActivity;
 
 import static juniar.porkat.Main.base_url;
@@ -32,12 +34,16 @@ public class AdapterListKatering extends RecyclerView.Adapter<AdapterListKaterin
 
     List<KateringModel> list;
     Context context;
+    PreferenceHelper preferences;
+    Location myLocation;
+    Location kateringLocation;
 
     public View view;
 
-    public AdapterListKatering(List<KateringModel> list, Context context) {
-        this.context = context;
+    public AdapterListKatering(List<KateringModel> list, Context context, PreferenceHelper preferences) {
         this.list = list;
+        this.context = context;
+        this.preferences = preferences;
     }
 
     @Override
@@ -45,6 +51,11 @@ public class AdapterListKatering extends RecyclerView.Adapter<AdapterListKaterin
 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_katering, parent, false);
         AdapterListKatering.ViewHolder holder = new AdapterListKatering.ViewHolder(v);
+
+        myLocation =new Location("");
+        kateringLocation=new Location("");
+        myLocation.setLongitude(Double.parseDouble(preferences.getString("my_longitude","0")));
+        myLocation.setLatitude(Double.parseDouble(preferences.getString("my_latitude","0")));
 
         return holder;
     }
@@ -57,6 +68,10 @@ public class AdapterListKatering extends RecyclerView.Adapter<AdapterListKaterin
         holder.tv_address.setText(model.getAlamat());
         holder.tv_rating.setText(String.valueOf(model.getRating()));
         Picasso.with(context).load(base_url+"foto/katering/"+model.getFoto()).fit().into(holder.img_photokatering);
+        kateringLocation.setLongitude(model.getLongitude());
+        kateringLocation.setLatitude(model.getLatitude());
+        double distance=myLocation.distanceTo(kateringLocation)/1000;
+        holder.tv_distance.setText(String.valueOf(distance).substring(0,3)+" km");
     }
 
     @Override
