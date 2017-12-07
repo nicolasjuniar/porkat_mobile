@@ -64,13 +64,12 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps">
-        </activity>
         <activity android:name=".TestActivity">
         </activity>
+        <activity android:name=".View.Activity.WelcomeScreenActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".View.Activity.TransaksiActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package juniar.porkat.View.Fragment;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -11,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -18,7 +21,9 @@ import butterknife.ButterKnife;
 import juniar.porkat.Model.KateringModel;
 import juniar.porkat.Presenter.ListKateringPresenter;
 import juniar.porkat.R;
+import juniar.porkat.Utils.MyLocation;
 import juniar.porkat.Utils.PreferenceHelper;
+import juniar.porkat.View.Activity.SplashScreenActivity;
 import juniar.porkat.View.Adapter.AdapterListKatering;
 import juniar.porkat.View.Interface.ListKateringListener;
 
@@ -59,6 +64,7 @@ public class KateringByDistanceFragment extends Fragment implements ListKatering
         swipe_refresh_layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                getMyLocation();
                 presenter.getListKateringByDistance(latitude, longitude);
             }
         });
@@ -73,6 +79,24 @@ public class KateringByDistanceFragment extends Fragment implements ListKatering
         });
 
         return view;
+    }
+
+    public void getMyLocation()
+    {
+        MyLocation.LocationResult locationResult = new MyLocation.LocationResult(){
+            @Override
+            public void gotLocation(Location location){
+                LatLng loc =new LatLng(location.getLatitude(),location.getLongitude());
+                preferences.putString("my_longitude",String.valueOf(loc.longitude));
+                preferences.putString("my_latitude",String.valueOf(loc.latitude));
+                latitude=loc.latitude;
+                longitude=loc.longitude;
+                Toast.makeText(getActivity(), "lokasi didapatkan", Toast.LENGTH_SHORT).show();
+
+            }
+        };
+        MyLocation myLocation = new MyLocation(getActivity());
+        myLocation.getLocation(getActivity(), locationResult);
     }
 
 

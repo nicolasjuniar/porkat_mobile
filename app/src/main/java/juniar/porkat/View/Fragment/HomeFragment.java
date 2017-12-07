@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import juniar.porkat.R;
-import juniar.porkat.Utils.ViewPagerAdapter;
+import juniar.porkat.Utils.TabPagerAdapter;
 
 /**
  * Created by Nicolas Juniar on 26/10/2017.
@@ -48,7 +48,7 @@ public class HomeFragment extends Fragment{
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
+        TabPagerAdapter adapter = new TabPagerAdapter(getChildFragmentManager());
         adapter.addFragment(kateringByRatingFragment, "Rekomendasi");
         adapter.addFragment(kateringByDistanceFragment, "Sekitar");
         viewPager.setAdapter(adapter);

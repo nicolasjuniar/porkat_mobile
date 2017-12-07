@@ -28,7 +28,7 @@ import juniar.porkat.R;
 import juniar.porkat.Utils.PreferenceHelper;
 import juniar.porkat.View.Fragment.SettingFragment;
 import juniar.porkat.View.Fragment.HomeFragment;
-import juniar.porkat.View.Fragment.TransactionHistoryFragment;
+import juniar.porkat.View.Fragment.RiwayatTransaksiFragment;
 import juniar.porkat.View.Interface.MenuPelangganListener;
 
 public class MenuPelangganActivity extends AppCompatActivity
@@ -48,7 +48,7 @@ public class MenuPelangganActivity extends AppCompatActivity
     private FragmentTransaction fragmentTransaction;
 
     HomeFragment homeFragment;
-    TransactionHistoryFragment transactionHistoryFragment;
+    RiwayatTransaksiFragment riwayatTransaksiFragment;
     SettingFragment settingFragment;
 
     @Override
@@ -141,11 +141,11 @@ public class MenuPelangganActivity extends AppCompatActivity
             fragment=homeFragment;
         } else if (id == R.id.nav_transaction) {
             setTitleActionBar("Transaksi");
-            if(transactionHistoryFragment==null)
+            if(riwayatTransaksiFragment ==null)
             {
-                transactionHistoryFragment=new TransactionHistoryFragment();
+                riwayatTransaksiFragment =new RiwayatTransaksiFragment();
             }
-            fragment=transactionHistoryFragment;
+            fragment= riwayatTransaksiFragment;
         } else if (id == R.id.nav_setting) {
             setTitleActionBar("Pengaturan");
             if(settingFragment==null)

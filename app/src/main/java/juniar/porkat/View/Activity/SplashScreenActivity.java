@@ -85,8 +85,8 @@ public class SplashScreenActivity extends AppCompatActivity{
                 LatLng loc =new LatLng(location.getLatitude(),location.getLongitude());
                 preferences.putString("my_longitude",String.valueOf(loc.longitude));
                 preferences.putString("my_latitude",String.valueOf(loc.latitude));
-//                getAddress(loc.latitude,loc.longitude);
-                getAddress(-7.779941,110.416567);
+                Toast.makeText(SplashScreenActivity.this, "lokasi didapatkan", Toast.LENGTH_SHORT).show();
+
             }
         };
         MyLocation myLocation = new MyLocation(this);
