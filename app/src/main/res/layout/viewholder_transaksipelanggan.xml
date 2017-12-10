@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
+
+    <RelativeLayout
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_restaurant"
+            android:tint="@color/colorPrimary"
+            android:id="@+id/ic_restaurant"/>
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/ic_restaurant"
+            android:text="Nama katering"
+            android:id="@+id/tv_namakatering"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            />
+
+        <ImageView
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_calendar"
+            android:tint="@color/colorPrimary"
+            android:layout_below="@id/ic_restaurant"
+            android:id="@+id/ic_calendar"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_tgl"
+            android:layout_below="@id/ic_restaurant"
+            android:layout_toRightOf="@id/ic_calendar"
+            android:text="Tanggal pesan:"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_tglpesan"
+            android:layout_below="@id/tv_tgl"
+            android:layout_toRightOf="@id/ic_calendar"
+            android:text="Tanggal mulai-Tanggal selesai"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"/>
+
+        <ImageView
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_status"
+            android:tint="@color/colorPrimary"
+            android:layout_below="@id/tv_tglpesan"
+            android:id="@+id/ic_status"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_status"
+            android:layout_below="@id/tv_tglpesan"
+            android:layout_toRightOf="@id/ic_status"
+            android:text="Status: menunggu konfirmasi"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"/>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
+

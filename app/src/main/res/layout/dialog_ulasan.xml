@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/White"
+    android:layout_marginRight="30dp"
+    android:layout_marginLeft="30dp">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete"
+        android:background="@color/White"
+        android:id="@+id/img_btn_delete"
+        android:tint="@color/Orange"
+        android:paddingTop="20dp"
+        android:layout_alignParentRight="true"
+        android:paddingRight="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/White"
+        android:paddingTop="20dp"
+        android:text="Tambahkan Ulasan"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RatingBar
+        android:layout_below="@id/tv_title"
+        android:id="@+id/rb_ulasan"
+        android:stepSize="1"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/rb_ulasan"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="start"
+        android:id="@+id/et_ulasan"
+        android:gravity="center_horizontal"
+        android:hint="ulasan"/>
+
+    <RelativeLayout
+        android:layout_below="@+id/et_ulasan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+
+        <ImageButton
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_done"
+            android:tint="@color/White"
+            android:id="@+id/img_btn_done"
+            android:text="ulas"
+            android:background="@color/colorPrimary"/>
+
+        <ImageButton
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_cancel"
+            android:tint="@color/White"
+            android:id="@+id/img_btn_cancel"
+            android:text="ulas"
+            android:background="@color/colorPrimary"/>
+    </RelativeLayout>
+
+</RelativeLayout>

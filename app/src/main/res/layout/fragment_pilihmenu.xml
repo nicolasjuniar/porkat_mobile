@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv_menu"
+        android:layout_above="@+id/btn_lanjut"
+        />
+
+    <Button
+        android:id="@+id/btn_lanjut"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="lanjut"
+        android:textColor="@color/White"
+        android:textSize="20sp"
+        android:background="@color/colorPrimary"/>
+</RelativeLayout>

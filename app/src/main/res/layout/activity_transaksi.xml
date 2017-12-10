@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="false"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:theme="@style/ToolbarStyle"
+        android:background="@color/colorPrimary"/>
+
+    <LinearLayout
+        android:id="@+id/ll_indicator"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/img_detailtransaksi"
+            android:src="@drawable/ic_description_50dp"
+            android:tint="@color/Gray"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/img_pilihmenu"
+            android:src="@drawable/ic_menu_50dp"
+            android:tint="@color/Gray"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/img_map"
+            android:src="@drawable/ic_map_50dp"
+            android:tint="@color/Gray"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/ll_indicator"
+        android:id="@+id/ll_title"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center">
+        <TextView
+            android:layout_below="@id/ll_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detail"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/White"
+            android:textAlignment="center"
+            android:id="@+id/tv_title"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_transaksi"
+        android:layout_below="@+id/ll_title"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>
