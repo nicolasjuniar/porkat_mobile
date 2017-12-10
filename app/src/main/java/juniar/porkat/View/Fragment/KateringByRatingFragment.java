@@ -23,7 +23,7 @@ import juniar.porkat.Presenter.ListKateringPresenter;
 import juniar.porkat.R;
 import juniar.porkat.Utils.MyLocation;
 import juniar.porkat.Utils.PreferenceHelper;
-import juniar.porkat.View.Adapter.AdapterListKatering;
+import juniar.porkat.View.Adapter.ListKateringAdapter;
 import juniar.porkat.View.Interface.ListKateringListener;
 
 /**
@@ -39,7 +39,7 @@ public class KateringByRatingFragment extends Fragment implements ListKateringLi
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
-    AdapterListKatering adapter;
+    ListKateringAdapter adapter;
     ListKateringPresenter presenter;
     PreferenceHelper preferences;
 
@@ -99,7 +99,7 @@ public class KateringByRatingFragment extends Fragment implements ListKateringLi
     public void onGetListKateringResponse(boolean error, ArrayList<KateringModel> ListKatering, Throwable t) {
         if(!error)
         {
-            adapter=new AdapterListKatering(ListKatering,getActivity(),preferences);
+            adapter=new ListKateringAdapter(ListKatering,getActivity(),preferences);
             rv_katering.setAdapter(adapter);
             rv_katering.setLayoutManager(new LinearLayoutManager(getActivity()));
             progressBar.setVisibility(View.GONE);
