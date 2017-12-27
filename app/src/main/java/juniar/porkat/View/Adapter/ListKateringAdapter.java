@@ -49,7 +49,7 @@ public class ListKateringAdapter extends RecyclerView.Adapter<ListKateringAdapte
     @Override
     public ListKateringAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_katering, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_katering2, parent, false);
         ListKateringAdapter.ViewHolder holder = new ListKateringAdapter.ViewHolder(v);
 
         myLocation =new Location("");
@@ -71,7 +71,7 @@ public class ListKateringAdapter extends RecyclerView.Adapter<ListKateringAdapte
         kateringLocation.setLongitude(model.getLongitude());
         kateringLocation.setLatitude(model.getLatitude());
         double distance=myLocation.distanceTo(kateringLocation)/1000;
-        holder.tv_distance.setText(String.valueOf(distance).substring(0,3)+" km");
+        holder.tv_distance.setText(String.valueOf(distance).substring(0,4)+" km");
     }
 
     @Override

@@ -24,13 +24,13 @@ import juniar.porkat.R;
 import juniar.porkat.Utils.MyLocation;
 import juniar.porkat.Utils.PreferenceHelper;
 import juniar.porkat.View.Adapter.ListKateringAdapter;
-import juniar.porkat.View.Interface.ListKateringListener;
+import juniar.porkat.View.Interface.KateringListener;
 
 /**
  * Created by Nicolas Juniar on 30/10/2017.
  */
 
-public class KateringByRatingFragment extends Fragment implements ListKateringListener {
+public class KateringByRatingFragment extends Fragment implements KateringListener {
 
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipe_refresh_layout;
@@ -92,8 +92,6 @@ public class KateringByRatingFragment extends Fragment implements ListKateringLi
         MyLocation myLocation = new MyLocation(getActivity());
         myLocation.getLocation(getActivity(), locationResult);
     }
-
-
 
     @Override
     public void onGetListKateringResponse(boolean error, ArrayList<KateringModel> ListKatering, Throwable t) {

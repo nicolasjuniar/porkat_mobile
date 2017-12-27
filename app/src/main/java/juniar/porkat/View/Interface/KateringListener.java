@@ -7,6 +7,6 @@ import juniar.porkat.Model.KateringModel;
  * Created by Nicolas Juniar on 30/10/2017.
  */
 
-public interface ListKateringListener {
+public interface KateringListener {
     public void onGetListKateringResponse(boolean error, ArrayList<KateringModel> ListKatering,Throwable t);
 }

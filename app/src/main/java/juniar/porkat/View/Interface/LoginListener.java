@@ -5,5 +5,5 @@ package juniar.porkat.View.Interface;
  */
 
 public interface LoginListener {
-    void onLoginResponse(boolean error, boolean success,String message, Throwable t);
+    void onLoginResponse(boolean error, boolean success,String message,String role, Throwable t);
 }

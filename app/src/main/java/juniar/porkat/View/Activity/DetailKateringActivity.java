@@ -128,6 +128,13 @@ public class DetailKateringActivity extends AppCompatActivity implements DetailK
 
     @Override
     public void cekSize(boolean error, boolean enable, Throwable t) {
-        cek=enable;
+        if(!error)
+        {
+            cek=enable;
+        }
+        else
+        {
+            Toast.makeText(this, t.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 }

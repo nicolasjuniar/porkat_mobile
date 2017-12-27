@@ -42,7 +42,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_tgl"
+            android:id="@+id/tgl_pesan"
             android:layout_below="@id/ic_restaurant"
             android:layout_toRightOf="@id/ic_calendar"
             android:text="Tanggal pesan:"
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_tglpesan"
-            android:layout_below="@id/tv_tgl"
+            android:layout_below="@id/tgl_pesan"
             android:layout_toRightOf="@id/ic_calendar"
             android:text="Tanggal mulai-Tanggal selesai"
             android:layout_marginLeft="5dp"

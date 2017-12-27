@@ -12,7 +12,7 @@
         android:src="@drawable/ic_delete"
         android:background="@color/White"
         android:id="@+id/img_btn_delete"
-        android:tint="@color/Orange"
+        android:tint="@color/colorAccent"
         android:paddingTop="20dp"
         android:layout_alignParentRight="true"
         android:paddingRight="10dp"/>
@@ -68,7 +68,7 @@
             android:tint="@color/White"
             android:id="@+id/img_btn_done"
             android:text="ulas"
-            android:background="@color/colorPrimary"/>
+            android:background="@drawable/capsule_button"/>
 
         <ImageButton
             android:layout_alignParentRight="true"
@@ -80,7 +80,7 @@
             android:tint="@color/White"
             android:id="@+id/img_btn_cancel"
             android:text="ulas"
-            android:background="@color/colorPrimary"/>
+            android:background="@drawable/capsule_button"/>
     </RelativeLayout>
 
 </RelativeLayout>

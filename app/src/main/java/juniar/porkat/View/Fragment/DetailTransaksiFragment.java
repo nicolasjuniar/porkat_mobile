@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.SwitchCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -134,7 +135,7 @@ public class DetailTransaksiFragment extends Fragment{
         String pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
         DateTime dateTime  = DateTime.parse(String.valueOf(new DateTime()), DateTimeFormat.forPattern(pattern));
         Locale locale=new Locale("in_ID");
-        return dateTime.toString("d MMM yyyy", locale);
+        return dateTime.toString("d MMM yyyy",locale);
     }
 
     private String changeDateFormat(String input){
@@ -146,7 +147,16 @@ public class DetailTransaksiFragment extends Fragment{
     }
 
     private DateTime parseDateFormat(String input){
-        DateTimeFormatter oldFormat=DateTimeFormat.forPattern("dd/MM/yyyy");
+        String pattern;
+        if(Character.isDigit(input.charAt(1)))
+        {
+            pattern="dd MMM yyyy";
+        }
+        else
+        {
+            pattern="d MMM yyyy";
+        }
+        DateTimeFormatter oldFormat=DateTimeFormat.forPattern(pattern);
         DateTime oldDateTime=oldFormat.parseDateTime(input);
         DateTimeFormatter newFormat=DateTimeFormat.forPattern("yyyy-MM-dd");
         DateTime newDateTime=DateTime.parse(newFormat.print(oldDateTime),newFormat);

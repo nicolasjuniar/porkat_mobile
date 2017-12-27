@@ -14,6 +14,8 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="com.ta.laundrygo.permission.MAPS_RECEIVE" />
 
+    <uses-feature android:name="android.hardware.camera" />
+
     <application
         android:name=".Main"
         android:allowBackup="true"
@@ -27,6 +29,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -49,7 +52,10 @@
         <activity
             android:name=".View.Activity.EditProfileActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".View.Activity.MenuKateringActivity" />
+        <activity
+            android:name=".View.Activity.MenuKateringActivity"
+            android:label="@string/title_activity_menu_katering"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View.Activity.HomeActivity"
             android:label="Beranda" />
@@ -64,10 +70,20 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <activity android:name=".View.Activity.WelcomeScreenActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".View.Activity.TransaksiActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".View.Activity.WelcomeScreenActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.Activity.TransaksiActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.Activity.DetailTransaksiActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.Activity.RegisterKateringActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".View.Activity.MainActivity"></activity>
     </application>
 
 </manifest>

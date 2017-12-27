@@ -35,7 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/ic_username"
-                    android:drawableTint="@color/colorPrimary"
+                    android:drawableTint="@color/colorAccent"
                     android:hint="id pengguna"
                     android:textColor="@color/Black"
                     android:maxLines="1"
@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/ic_password"
-                    android:drawableTint="@color/colorPrimary"
+                    android:drawableTint="@color/colorAccent"
                     android:hint="katasandi"
                     android:inputType="textPassword"
                     android:textColor="@color/Black"
@@ -63,7 +63,7 @@
             <Button
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
@@ -71,7 +71,7 @@
                 android:text="Masuk"
                 android:id="@+id/btn_login"
                 android:textAllCaps="false"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/capsule_button"
                 android:textColor="@color/White"/>
 
             <TextView

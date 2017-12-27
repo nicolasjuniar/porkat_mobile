@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:theme="@style/ToolbarStyle"
+        android:background="@color/colorPrimary"/>
+
+    <ScrollView
+        android:layout_marginTop="?actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_namakatering"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:cardCornerRadius="5dp"
+                android:elevation="10dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp">
+                    <ImageView
+                        android:id="@+id/ic_restaurant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_restaurant_40dp"
+                        android:tint="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/nama_katering"
+                        android:layout_toRightOf="@id/ic_restaurant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Katering"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_namakatering"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="katering abcd"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_below="@id/nama_katering"
+                        android:layout_toRightOf="@id/ic_restaurant"
+                        android:layout_marginLeft="5dp"/>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_below="@id/cv_namakatering"
+                android:id="@+id/cv_alamatpemesanan"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:cardCornerRadius="5dp"
+                android:elevation="10dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp">
+                    <ImageView
+                        android:id="@+id/ic_map"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_map_40dp"
+                        android:tint="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/alamat_pemesanan"
+                        android:layout_toRightOf="@id/ic_map"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alamat Pemesanan"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_alamatpemesanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jalan tu wa ga pat"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_below="@id/alamat_pemesanan"
+                        android:layout_toRightOf="@id/ic_map"
+                        android:layout_marginLeft="5dp"/>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_below="@id/cv_alamatpemesanan"
+                android:id="@+id/cv_tglpesan"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:cardCornerRadius="5dp"
+                android:elevation="10dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp">
+                    <ImageView
+                        android:id="@+id/ic_calendar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_calendar_40dp"
+                        android:tint="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/tgl_pesan"
+                        android:layout_toRightOf="@id/ic_calendar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Pesan"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_tglpesan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10 Des 2017 s/d 12 Des 2017"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_below="@id/tgl_pesan"
+                        android:layout_toRightOf="@id/ic_calendar"
+                        android:layout_marginLeft="5dp"/>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_below="@id/cv_tglpesan"
+                android:id="@+id/cv_total"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:cardCornerRadius="5dp"
+                android:elevation="10dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp">
+                    <ImageView
+                        android:id="@+id/ic_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_money_40dp"
+                        android:tint="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/total"
+                        android:layout_toRightOf="@id/ic_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp. 50.000"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_below="@id/total"
+                        android:layout_toRightOf="@id/ic_money"
+                        android:layout_marginLeft="5dp"/>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_below="@id/cv_total"
+                android:id="@+id/cv_catatan"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:cardCornerRadius="5dp"
+                android:elevation="10dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp">
+                    <ImageView
+                        android:id="@+id/ic_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_description_40dp"
+                        android:tint="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/catatan"
+                        android:layout_toRightOf="@id/ic_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Catatan"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_catatan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gud sangat"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_below="@id/catatan"
+                        android:layout_toRightOf="@id/ic_description"
+                        android:layout_marginLeft="5dp"/>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_below="@id/cv_catatan"
+                android:id="@+id/cv_status"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:cardCornerRadius="5dp"
+                android:elevation="10dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp">
+                    <ImageView
+                        android:id="@+id/ic_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_status_40dp"
+                        android:tint="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/status"
+                        android:layout_toRightOf="@id/ic_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status Transaksi"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Melakukan Pembayaran"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_below="@id/status"
+                        android:layout_toRightOf="@id/ic_status"
+                        android:layout_marginLeft="5dp"/>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <Button
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@id/cv_status"
+                android:background="@drawable/capsule_button"
+                android:text="tambahkan nota"
+                android:textColor="@color/White"
+                android:id="@+id/btn_tambahnota"
+                android:layout_marginBottom="10dp"
+                android:layout_centerHorizontal="true"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="500px"
+                android:layout_marginLeft="20dp"
+                android:visibility="gone"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/img_fotonota"
+                android:layout_below="@id/btn_tambahnota"
+                />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

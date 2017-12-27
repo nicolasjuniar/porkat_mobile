@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_pengiriman"
+            android:icon="@drawable/ic_send"
+            android:title="Pengiriman makanan" />
+        <item
+            android:id="@+id/nav_makanan"
+            android:icon="@drawable/ic_restaurant"
+            android:title="Lihat Makanan" />
+        <item
+            android:id="@+id/nav_pesanan"
+            android:icon="@drawable/ic_money"
+            android:title="Daftar Pesanan"/>
+        <item
+            android:id="@+id/nav_menu"
+            android:icon="@drawable/ic_menu"
+            android:title="Kelola Menu"/>
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_setting"
+            android:title="Pengaturan" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_back"
+            android:title="Keluar" />
+    </group>
+
+</menu>

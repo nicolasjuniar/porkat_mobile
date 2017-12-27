@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
+    android:orientation="vertical"
     android:focusableInTouchMode="true"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <requestFocus/>
 
-    <RelativeLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:theme="@style/ToolbarStyle"
+        android:background="@color/colorPrimary"/>
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="?attr/homeAsUpIndicator"
-            app:theme="@style/ToolbarStyle"
-            android:background="@color/colorPrimary"/>
 
         <LinearLayout
-            android:layout_below="@id/toolbar"
-            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -126,13 +126,17 @@
                     android:drawableRight="@drawable/ic_home"
                     android:drawableTint="@color/colorPrimary"
                     android:hint="alamat"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
                     android:textColor="@color/Black"/>
             </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
@@ -140,9 +144,8 @@
                 android:text="Daftar"
                 android:id="@+id/btn_register"
                 android:textAllCaps="false"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/capsule_button"
                 android:textColor="@color/White"/>
         </LinearLayout>
-    </RelativeLayout>
-
-</android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

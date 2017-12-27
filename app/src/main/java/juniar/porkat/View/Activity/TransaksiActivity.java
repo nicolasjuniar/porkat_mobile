@@ -23,12 +23,10 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import java.util.Date;
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import juniar.porkat.MapsFragment;
 import juniar.porkat.Model.DetailTransaksiModel;
 import juniar.porkat.Model.PelangganModel;
 import juniar.porkat.Model.TransaksiMenuModel;
@@ -141,9 +139,9 @@ public class TransaksiActivity extends AppCompatActivity implements DetailTransa
                 fragmentTransaction.hide(pilihLokasiFragment);
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
                 fragmentTransaction.show(detailTransaksiFragment).commit();
-                setTintColor(img_detailtransaksi,R.color.colorPrimary);
-                setTintColor(img_pilihmenu,R.color.Gray);
-                setTintColor(img_map,R.color.Gray);
+                setTintColor(img_detailtransaksi,R.color.colorAccent);
+                setTintColor(img_pilihmenu,R.color.colorPrimary);
+                setTintColor(img_map,R.color.colorPrimary);
                 tv_title.setText("Detail");
                 break;
             }
@@ -153,9 +151,9 @@ public class TransaksiActivity extends AppCompatActivity implements DetailTransa
                 fragmentTransaction.hide(pilihLokasiFragment);
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
                 fragmentTransaction.show(pilihMenuFragment).commit();
-                setTintColor(img_detailtransaksi,R.color.colorPrimary);
-                setTintColor(img_pilihmenu,R.color.colorPrimary);
-                setTintColor(img_map,R.color.Gray);
+                setTintColor(img_detailtransaksi,R.color.colorAccent);
+                setTintColor(img_pilihmenu,R.color.colorAccent);
+                setTintColor(img_map,R.color.colorPrimary);
                 tv_title.setText("Pilih Menu");
                 break;
             }
@@ -165,9 +163,9 @@ public class TransaksiActivity extends AppCompatActivity implements DetailTransa
                 fragmentTransaction.hide(detailTransaksiFragment);
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
                 fragmentTransaction.show(pilihLokasiFragment).hide(pilihMenuFragment).commit();
-                setTintColor(img_detailtransaksi,R.color.colorPrimary);
-                setTintColor(img_pilihmenu,R.color.colorPrimary);
-                setTintColor(img_map,R.color.colorPrimary);
+                setTintColor(img_detailtransaksi,R.color.colorAccent);
+                setTintColor(img_pilihmenu,R.color.colorAccent);
+                setTintColor(img_map,R.color.colorAccent);
                 tv_title.setText("Pilih Lokasi");
                 break;
             }

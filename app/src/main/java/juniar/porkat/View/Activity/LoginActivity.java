@@ -1,12 +1,14 @@
 package juniar.porkat.View.Activity;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -54,8 +56,8 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
 
         preferences=PreferenceHelper.getInstance(getApplicationContext());
 
-        setDrawableTint(R.drawable.ic_password, ContextCompat.getColor(this, R.color.colorPrimary));
-        setDrawableTint(R.drawable.ic_username, ContextCompat.getColor(this, R.color.colorPrimary));
+        setDrawableTint(R.drawable.ic_password, ContextCompat.getColor(this, R.color.colorAccent));
+        setDrawableTint(R.drawable.ic_username, ContextCompat.getColor(this, R.color.colorAccent));
 
         presenter=new LoginPresenter(this,preferences);
 
@@ -87,7 +89,23 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
         tv_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this,RegisterPelangganActivity.class));
+                final CharSequence[] items = { "Pelanggan", "Katering", "Batal" };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                builder.setTitle("Tambahkan Foto");
+                builder.setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int item) {
+                        if (items[item].equals("Pelanggan")) {
+                            startActivity(new Intent(LoginActivity.this,RegisterPelangganActivity.class));
+                        } else if (items[item].equals("Katering")) {
+                            startActivity(new Intent(LoginActivity.this,RegisterKateringActivity.class));
+                        } else if (items[item].equals("Batal")) {
+                            dialog.dismiss();
+                        }
+                    }
+                });
+                builder.show();
             }
         });
     }
@@ -128,7 +146,7 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
     }
 
     @Override
-    public void onLoginResponse(boolean error, boolean success,String message, Throwable t) {
+    public void onLoginResponse(boolean error, boolean success, String message, String role, Throwable t) {
         if ((progressDialog != null) && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
@@ -137,7 +155,14 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
             Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
             if(success)
             {
-                startActivity(new Intent(LoginActivity.this,MenuPelangganActivity.class));
+                if(role.equalsIgnoreCase("pelanggan"))
+                {
+                    startActivity(new Intent(LoginActivity.this,MenuPelangganActivity.class));
+                }
+                else
+                {
+                    startActivity(new Intent(LoginActivity.this,MenuKateringActivity.class));
+                }
                 finishAffinity();
             }
         }
@@ -146,6 +171,4 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
             Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
-
-
 }

@@ -125,7 +125,7 @@ public class ListPilihMenuAdapter extends RecyclerView.Adapter<RecyclerView.View
                                 holder2.tv_waktu.setText(hour+":"+minute);
                                 list.get(position).setJam_pengantaran(parseDateTime(holder2.tv_waktu.getText().toString()));
                             }
-                        },hour,minute,true);
+                        },hour,minute,false);
                         timePickerDialog.show();
                     }
                 });

@@ -169,7 +169,6 @@ public class MenuPelangganActivity extends AppCompatActivity
                         public void onClick(DialogInterface dialogInterface, int i) {
                         }
                     })
-                    .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
         }
 

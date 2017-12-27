@@ -39,12 +39,12 @@ public class LoginPresenter {
                 {
                     savePreferences(response.body());
                 }
-                listener.onLoginResponse(false,loginResponse.isStatus(),loginResponse.getMessage(),null);
+                listener.onLoginResponse(false,loginResponse.isStatus(),loginResponse.getMessage(),loginResponse.getRole(),null);
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                listener.onLoginResponse(true,false,null,t);
+                listener.onLoginResponse(true,false,null,null,t);
             }
         });
     }

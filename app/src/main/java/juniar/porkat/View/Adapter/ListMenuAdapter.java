@@ -30,19 +30,12 @@ public class ListMenuAdapter extends RecyclerView.Adapter<ListMenuAdapter.ViewHo
 
     List<MenuKateringModel> list;
     Context context;
-    onMenuClickCallback callback;
 
     public View view;
 
     public ListMenuAdapter(List<MenuKateringModel> list, Context context) {
         this.context = context;
         this.list = list;
-    }
-
-    public ListMenuAdapter(List<MenuKateringModel> list, Context context, onMenuClickCallback callback) {
-        this.list = list;
-        this.context = context;
-        this.callback = callback;
     }
 
     @Override
@@ -97,21 +90,6 @@ public class ListMenuAdapter extends RecyclerView.Adapter<ListMenuAdapter.ViewHo
             view = itemView;
 
             ButterKnife.bind(this,view);
-
-            if(callback!=null)
-            {
-                view.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        callback.onMenuClickMenu(model);
-                    }
-                });
-            }
         }
-    }
-
-    public interface onMenuClickCallback
-    {
-        void onMenuClickMenu(MenuKateringModel model);
     }
 }

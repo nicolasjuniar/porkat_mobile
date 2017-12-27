@@ -9,5 +9,6 @@
     <string name="action_settings" translatable="false">Settings</string>
     <string name="title_activity_detail_katering" translatable="false">DetailKateringActivity</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_menu_katering">MenuKateringActivity</string>
 
 </resources>
