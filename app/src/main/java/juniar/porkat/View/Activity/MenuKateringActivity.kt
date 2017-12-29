@@ -21,8 +21,9 @@ import juniar.porkat.Model.KateringModel
 import juniar.porkat.Model.PelangganModel
 import juniar.porkat.R
 import juniar.porkat.Utils.PreferenceHelper
+import juniar.porkat.View.Fragment.PengantaranFragment
 import kotlinx.android.synthetic.main.activity_menukatering.*
-import kotlinx.android.synthetic.main.app_bar_menu_katering.*
+import kotlinx.android.synthetic.main.app_bar_menukatering.*
 import kotlinx.android.synthetic.main.nav_header_menukatering.*
 import kotlinx.android.synthetic.main.nav_header_menukatering.view.*
 
@@ -30,7 +31,6 @@ class MenuKateringActivity : AppCompatActivity(), NavigationView.OnNavigationIte
 
     lateinit var preferences:PreferenceHelper
     var exit=false
-    lateinit var fragmentTransaction: FragmentTransaction
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +48,8 @@ class MenuKateringActivity : AppCompatActivity(), NavigationView.OnNavigationIte
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
+
+        supportFragmentManager.beginTransaction().replace(R.id.container_body, PengantaranFragment()).commit()
 
         nav_view.menu.getItem(0).setChecked(true)
         loadPreferences()
@@ -99,7 +101,7 @@ class MenuKateringActivity : AppCompatActivity(), NavigationView.OnNavigationIte
         var fragment: Fragment? = null
         when (item.itemId) {
             R.id.nav_pengiriman -> {
-                Toast.makeText(this@MenuKateringActivity,"pengiriman",Toast.LENGTH_SHORT).show()
+                fragment=PengantaranFragment()
                 supportActionBar?.setTitle("Pengiriman Makanan")
             }
             R.id.nav_makanan -> {
@@ -137,8 +139,7 @@ class MenuKateringActivity : AppCompatActivity(), NavigationView.OnNavigationIte
 
 
         if (fragment != null) {
-            fragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.container_body, fragment).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.container_body, fragment).commit()
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
