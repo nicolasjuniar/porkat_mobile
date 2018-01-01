@@ -10,6 +10,12 @@ import juniar.porkat.Main.base_url
 import juniar.porkat.Model.PengantaranModel
 import juniar.porkat.R
 import kotlinx.android.synthetic.main.viewholder_pengataran.view.*
+import org.joda.time.DateTime
+import org.joda.time.Duration
+import org.joda.time.format.DateTimeFormat
+import java.util.*
+import java.util.concurrent.TimeUnit
+
 
 /**
  * Created by Nicolas Juniar on 21/12/2017.
@@ -55,9 +61,46 @@ class PengantaranAdapter(list: MutableList<PengantaranModel>, context:Context) :
         {
             tv_namalengkap.text=model.nama_lengkap
             tv_alamat.text=model.alamat
-            tv_waktu.text=model.waktu_pengataran
+            tv_waktu.text=getTime(model.waktu_pengataran)
+            val difference=getDifferenceTime(getTimeNow(),getTime(model.waktu_pengataran))
+            when
+            {
+                difference>=3 -> img_indicator.setImageResource(R.color.Green)
+                difference>=1 -> img_indicator.setImageResource(R.color.Yellow)
+                else -> img_indicator.setImageResource(R.color.Red)
+            }
             Picasso.with(view.context).load(base_url + "foto/menu/" + model.foto).into(img_menu)
-            img_indicator.setImageResource(R.color.Red)
         }
+
+        fun convertDateTime(input:String) : DateTime
+        {
+            val formatter = DateTimeFormat.forPattern("dd/MM/yyyy HH:mm:ss")
+            return formatter.parseDateTime(input)
+        }
+
+        fun getTime(input:String) : String
+        {
+            val pattern = "yyyy-MM-dd HH:mm:ss"
+            val dateTime = DateTime.parse(input, DateTimeFormat.forPattern(pattern))
+            return dateTime.toString("HH:mm")
+        }
+
+
+        fun getTimeNow(): String {
+            val pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+            val dateTime = DateTime.parse(DateTime().toString(), DateTimeFormat.forPattern(pattern))
+            val locale = Locale("in_ID")
+            return dateTime.toString("HH:mm", locale)
+        }
+
+        fun getDifferenceTime(jamSekarang: String,jamAntar:String): Long {
+            val pattern="HH:mm"
+            val format = DateTimeFormat.forPattern(pattern)
+            val dtSekarang = format.parseDateTime(jamSekarang)
+            val dtAntar = format.parseDateTime(jamAntar)
+            val duration= Duration(dtSekarang.millis,dtAntar.millis)
+            return duration.standardHours
+        }
+
     }
 }

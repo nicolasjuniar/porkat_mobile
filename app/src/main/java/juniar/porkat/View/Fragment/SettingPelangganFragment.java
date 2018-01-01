@@ -20,7 +20,7 @@ import juniar.porkat.View.Interface.MenuPelangganListener;
  * Created by Nicolas Juniar on 26/10/2017.
  */
 
-public class SettingFragment extends Fragment {
+public class SettingPelangganFragment extends Fragment {
 
     @BindView(R.id.cv_editprofile)
     CardView cv_editprofile;

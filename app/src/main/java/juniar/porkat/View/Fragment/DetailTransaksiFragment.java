@@ -158,6 +158,7 @@ public class DetailTransaksiFragment extends Fragment{
         }
         DateTimeFormatter oldFormat=DateTimeFormat.forPattern(pattern);
         DateTime oldDateTime=oldFormat.parseDateTime(input);
+        long time=oldDateTime.getMillis();
         DateTimeFormatter newFormat=DateTimeFormat.forPattern("yyyy-MM-dd");
         DateTime newDateTime=DateTime.parse(newFormat.print(oldDateTime),newFormat);
         return newDateTime;

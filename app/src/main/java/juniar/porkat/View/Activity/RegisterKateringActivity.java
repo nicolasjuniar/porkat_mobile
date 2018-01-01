@@ -142,7 +142,7 @@ public class RegisterKateringActivity extends AppCompatActivity implements Regis
         try {
             List<Address> addresses = geocoder.getFromLocation(lat, lng, 1);
             Address obj = addresses.get(0);
-            address = obj.getAddressLine(0);
+            address=addresses.get(0).getThoroughfare()+" "+addresses.get(0).getSubThoroughfare()+", "+addresses.get(0).getSubLocality();
 
         } catch (IOException e) {
             // TODO Auto-generated catch block

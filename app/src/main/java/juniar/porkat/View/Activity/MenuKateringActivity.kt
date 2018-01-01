@@ -21,7 +21,9 @@ import juniar.porkat.Model.KateringModel
 import juniar.porkat.Model.PelangganModel
 import juniar.porkat.R
 import juniar.porkat.Utils.PreferenceHelper
+import juniar.porkat.View.Fragment.LihatMakananFragment
 import juniar.porkat.View.Fragment.PengantaranFragment
+import juniar.porkat.View.Fragment.SettingKateringFragment
 import kotlinx.android.synthetic.main.activity_menukatering.*
 import kotlinx.android.synthetic.main.app_bar_menukatering.*
 import kotlinx.android.synthetic.main.nav_header_menukatering.*
@@ -105,7 +107,7 @@ class MenuKateringActivity : AppCompatActivity(), NavigationView.OnNavigationIte
                 supportActionBar?.setTitle("Pengiriman Makanan")
             }
             R.id.nav_makanan -> {
-                Toast.makeText(this@MenuKateringActivity,"makanan",Toast.LENGTH_SHORT).show()
+                fragment=LihatMakananFragment()
                 supportActionBar?.setTitle("Lihat Makanan")
             }
             R.id.nav_pesanan -> {
@@ -117,7 +119,7 @@ class MenuKateringActivity : AppCompatActivity(), NavigationView.OnNavigationIte
                 supportActionBar?.setTitle("Kelola Menu")
             }
             R.id.nav_setting -> {
-                Toast.makeText(this@MenuKateringActivity,"setting",Toast.LENGTH_SHORT).show()
+                fragment=SettingKateringFragment()
                 supportActionBar?.setTitle("Pengaturan")
             }
             R.id.nav_logout -> {

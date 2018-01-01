@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
 import juniar.porkat.Model.PelangganModel;
 import juniar.porkat.R;
 import juniar.porkat.Utils.PreferenceHelper;
-import juniar.porkat.View.Fragment.SettingFragment;
+import juniar.porkat.View.Fragment.SettingPelangganFragment;
 import juniar.porkat.View.Fragment.HomeFragment;
 import juniar.porkat.View.Fragment.RiwayatTransaksiFragment;
 import juniar.porkat.View.Interface.MenuPelangganListener;
@@ -49,7 +49,7 @@ public class MenuPelangganActivity extends AppCompatActivity
 
     HomeFragment homeFragment;
     RiwayatTransaksiFragment riwayatTransaksiFragment;
-    SettingFragment settingFragment;
+    SettingPelangganFragment settingPelangganFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,11 +148,11 @@ public class MenuPelangganActivity extends AppCompatActivity
             fragment= riwayatTransaksiFragment;
         } else if (id == R.id.nav_setting) {
             setTitleActionBar("Pengaturan");
-            if(settingFragment==null)
+            if(settingPelangganFragment ==null)
             {
-                settingFragment=new SettingFragment();
+                settingPelangganFragment =new SettingPelangganFragment();
             }
-            fragment=settingFragment;
+            fragment= settingPelangganFragment;
         } else if (id == R.id.nav_logout) {
             new AlertDialog.Builder(this)
                     .setTitle("Keluar")

@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -139,7 +140,22 @@ public class RegisterPelangganActivity extends AppCompatActivity implements Regi
         try {
             List<Address> addresses = geocoder.getFromLocation(lat, lng, 1);
             Address obj = addresses.get(0);
-            address = obj.getAddressLine(0);
+            address=addresses.get(0).getThoroughfare()+" "+addresses.get(0).getSubThoroughfare()+", "+addresses.get(0).getSubLocality();
+            //address = obj.getAddressLine(0);
+            String addressd = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+            String city = addresses.get(0).getLocality();
+            String state = addresses.get(0).getAdminArea();
+            String country = addresses.get(0).getCountryName();
+            String postalCode = addresses.get(0).getPostalCode();
+            String knownName = addresses.get(0).getFeatureName();
+            String subAdminArea=addresses.get(0).getSubAdminArea();
+            String premises=addresses.get(0).getPremises();
+            String thoroughfare=addresses.get(0).getThoroughfare();
+            String subThoroughfare=addresses.get(0).getSubThoroughfare();
+            String area=addresses.get(0).getSubLocality();
+
+//            Log.d("asdf","address:"+addressd +"\ncity:" +city+"\nstate: "+state+"\ncountry: "+country+"\npostalcode: "+postalCode+"\nknown name: "+knownName+"\nSub admin area: "+subAdminArea+"\npremises: "+premises+"\nthroughfare: "+thoroughfare+"\nsubthroughfare"+subThoroughfare+"\nsub locality: "+area);
+
 
         } catch (IOException e) {
             // TODO Auto-generated catch block
