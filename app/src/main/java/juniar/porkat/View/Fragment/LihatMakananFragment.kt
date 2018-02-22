@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,20 +34,26 @@ class LihatMakananFragment : Fragment(),LihatMakananListener
     lateinit var makananAdapter:MakananAdapter
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view=inflater?.inflate(R.layout.fragment_lihatmakanan,container,false)
+        return inflater?.inflate(R.layout.fragment_lihatmakanan,container,false)
+    }
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         preferences= PreferenceHelper.getInstance(context)
         val katering= Gson().fromJson(preferences.getString("profile_katering",""), KateringModel::class.java)
         presenter= LihatMakananPresenter(this)
         presenter.getListMakanan(katering.id_katering,"")
 
-//        swipe_refresh_layout.setOnRefreshListener{ presenter.getListMakanan(katering.id_katering,"") }
-//
-//        rv_makanan.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-//            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-//                val topRowVerticalPosition = if (recyclerView == null || recyclerView.childCount == 0) 0 else recyclerView.getChildAt(0).top
-//                swipe_refresh_layout.isEnabled=topRowVerticalPosition >= 0
-//            }
-//        })
+        tv_tanggal.text=getDateNow()
+
+        swipe_refresh_layout.setOnRefreshListener{ presenter.getListMakanan(katering.id_katering,"") }
+
+        rv_makanan.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                val topRowVerticalPosition = if (recyclerView == null || recyclerView.childCount == 0) 0 else recyclerView.getChildAt(0).top
+                swipe_refresh_layout.isEnabled=topRowVerticalPosition >= 0
+            }
+        })
 
         val calendar = Calendar.getInstance()
         var year = calendar.get(Calendar.YEAR)
@@ -73,8 +80,6 @@ class LihatMakananFragment : Fragment(),LihatMakananListener
                 datePickerDialog.updateDate(tahunMulai, bulanMulai, hariMulai)
             }
             datePickerDialog.show()}
-
-        return view
     }
 
     fun changeDateFormat(input: String): String {
@@ -85,6 +90,13 @@ class LihatMakananFragment : Fragment(),LihatMakananListener
         return newDateTime.toString("d MMM yyyy")
     }
 
+    fun getDateNow(): String {
+        val pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        val dateTime = DateTime.parse(DateTime().toString(), DateTimeFormat.forPattern(pattern))
+        val locale = Locale("in_ID")
+        return dateTime.toString("d MMM yyyy", locale)
+    }
+
     override fun onGetListMakanan(error: Boolean, listMakanan: ArrayList<MakananModel>?, t: Throwable?) {
         if(!error)
         {
@@ -92,10 +104,14 @@ class LihatMakananFragment : Fragment(),LihatMakananListener
             rv_makanan.adapter= makananAdapter
             rv_makanan.layoutManager=LinearLayoutManager(activity)
             progressBar.visibility=View.GONE
+            swipe_refresh_layout.isRefreshing=false
         }
         else
         {
             Toast.makeText(activity,t?.message,Toast.LENGTH_SHORT).show()
+            Log.d("error sem: ",t?.message)
+            progressBar.visibility=View.GONE
+            swipe_refresh_layout.isRefreshing=false
         }
     }
 }

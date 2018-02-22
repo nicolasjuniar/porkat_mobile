@@ -4,12 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.CardView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import juniar.porkat.R
-import juniar.porkat.View.Activity.ChangePasswordActivity
+import juniar.porkat.View.Activity.ChangePasswordKateringActivity
+import juniar.porkat.View.Activity.ChangePasswordPelangganActivity
 import juniar.porkat.View.Activity.EditProfileActivity
 import kotlinx.android.synthetic.main.fragment_setting.*
 
@@ -34,18 +34,18 @@ class SettingKateringFragment : Fragment()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_setting, container, false)
+        return inflater.inflate(R.layout.fragment_setting, container, false)
+    }
 
-        val cv_changepassword=view.findViewById<CardView>(R.id.cv_changepassword)
-//
-//        cv_editprofile!!.setOnClickListener {
-//            val intent = Intent(activity, EditProfileActivity::class.java)
-//            startActivityForResult(intent, 1)
-//        }
-//
-        cv_changepassword.setOnClickListener { startActivity(Intent(activity, ChangePasswordActivity::class.java)) }
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        cv_editprofile!!.setOnClickListener {
+            val intent = Intent(activity, EditProfileActivity::class.java)
+            startActivityForResult(intent, 1)
+        }
 
-        return view
+        cv_changepassword.setOnClickListener { startActivity(Intent(activity, ChangePasswordKateringActivity::class.java)) }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {

@@ -20,7 +20,7 @@ import com.google.gson.Gson;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import juniar.porkat.Model.PelangganModel;
-import juniar.porkat.Presenter.SettingPresenter;
+import juniar.porkat.Presenter.SettingPelangganPresenter;
 import juniar.porkat.R;
 import juniar.porkat.Utils.PreferenceHelper;
 import juniar.porkat.View.Interface.MenuPelangganListener;
@@ -46,7 +46,7 @@ public class EditProfileActivity extends AppCompatActivity implements SettingLis
     PreferenceHelper preferences;
     PelangganModel model;
     ProgressDialog progressDialog;
-    SettingPresenter presenter;
+    SettingPelangganPresenter presenter;
     MenuPelangganListener listener;
 
     @Override
@@ -58,7 +58,7 @@ public class EditProfileActivity extends AppCompatActivity implements SettingLis
         getSupportActionBar().setTitle("Ubah Profil");
 
         preferences=PreferenceHelper.getInstance(getApplicationContext());
-        presenter=new SettingPresenter(this,preferences);
+        presenter=new SettingPelangganPresenter(this,preferences);
         model=new Gson().fromJson(preferences.getString("profile_pelanggan",""),PelangganModel.class);
 
         listener=(MenuPelangganListener) getIntent().getParcelableExtra("listener");

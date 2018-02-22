@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import juniar.porkat.R;
-import juniar.porkat.View.Activity.ChangePasswordActivity;
+import juniar.porkat.View.Activity.ChangePasswordPelangganActivity;
 import juniar.porkat.View.Activity.EditProfileActivity;
 import juniar.porkat.View.Interface.MenuPelangganListener;
 
@@ -60,7 +60,7 @@ public class SettingPelangganFragment extends Fragment {
         cv_changepassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(),ChangePasswordActivity.class));
+                startActivity(new Intent(getActivity(),ChangePasswordPelangganActivity.class));
             }
         });
 

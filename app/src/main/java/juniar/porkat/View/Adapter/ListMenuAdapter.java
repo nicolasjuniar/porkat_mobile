@@ -52,7 +52,7 @@ public class ListMenuAdapter extends RecyclerView.Adapter<ListMenuAdapter.ViewHo
         holder.model=list.get(position);
         holder.tv_namamenu.setText(holder.model.getNama_menu());
         holder.tv_harga.setText(convertToIDR(String.valueOf(holder.model.getHarga())));
-        Picasso.with(context).load(base_url+"foto/katering/"+holder.model.getFoto()).fit().into(holder.img_menu);
+        Picasso.with(context).load(base_url+"foto/katering/"+holder.model.getFoto()).centerCrop().fit().into(holder.img_menu);
     }
 
     public String convertToIDR(String harga)

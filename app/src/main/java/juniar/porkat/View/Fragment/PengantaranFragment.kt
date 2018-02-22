@@ -29,23 +29,17 @@ class PengantaranFragment:Fragment(),PengataranListener{
     lateinit var preferences: PreferenceHelper
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view=inflater?.inflate(R.layout.fragment_kelolapengantaran,container,false)
-        val katering= Gson().fromJson(preferences.getString("profile_katering",""),KateringModel::class.java)
-        preferences= PreferenceHelper.getInstance(context)
-
-        presenter= PengantaranPresenter(this)
-        presenter.getListPengataran(katering.id_katering)
-        return view
+        return inflater?.inflate(R.layout.fragment_kelolapengantaran,container,false)
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        preferences= PreferenceHelper.getInstance(context)
         val katering= Gson().fromJson(preferences.getString("profile_katering",""),KateringModel::class.java)
-        setRefreshLayout(katering)
-    }
 
-    fun setRefreshLayout(katering:KateringModel)
-    {
+        presenter= PengantaranPresenter(this)
+        presenter.getListPengataran(katering.id_katering)
+
         swipe_refresh_layout.setOnRefreshListener{ presenter.getListPengataran(katering.id_katering) }
 
         rv_transaksi.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -63,6 +57,7 @@ class PengantaranFragment:Fragment(),PengataranListener{
             pengantaranAdapter = PengantaranAdapter(listPengataran!!,activity)
             rv_transaksi.adapter= pengantaranAdapter
             rv_transaksi.layoutManager=LinearLayoutManager(activity)
+            swipe_refresh_layout.isRefreshing=false
         }
         else
         {

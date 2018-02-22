@@ -2,10 +2,10 @@ package juniar.porkat.Presenter;
 
 import com.google.gson.Gson;
 
-import juniar.porkat.API.SettingAPI;
-import juniar.porkat.Model.ChangePasswordRequest;
+import juniar.porkat.API.SettingPelangganAPI;
+import juniar.porkat.Model.ChangePasswordPelangganRequest;
 import juniar.porkat.Model.ChangePasswordResponse;
-import juniar.porkat.Model.EditProfileRequest;
+import juniar.porkat.Model.EditProfilePelangganRequest;
 import juniar.porkat.Model.EditProfileResponse;
 import juniar.porkat.Model.PelangganModel;
 import juniar.porkat.Utils.NetworkConfig;
@@ -19,23 +19,23 @@ import retrofit2.Response;
  * Created by Nicolas Juniar on 07/11/2017.
  */
 
-public class SettingPresenter {
-    SettingAPI service;
+public class SettingPelangganPresenter {
+    SettingPelangganAPI service;
     SettingListener listener;
     PreferenceHelper preferences;
 
     Call<ChangePasswordResponse> callPasswordResponse;
     Call<EditProfileResponse> callEditProfileResponse;
 
-    public SettingPresenter(SettingListener listener, PreferenceHelper preferences) {
+    public SettingPelangganPresenter(SettingListener listener, PreferenceHelper preferences) {
         this.listener = listener;
         this.preferences=preferences;
-        service= NetworkConfig.createService(SettingAPI.class);
+        service= NetworkConfig.createService(SettingPelangganAPI.class);
     }
 
     public void changePassword(final PelangganModel model)
     {
-        ChangePasswordRequest requestBody=new ChangePasswordRequest(model.getId_pelanggan(),model.getKatasandi());
+        ChangePasswordPelangganRequest requestBody=new ChangePasswordPelangganRequest(model.getId_pelanggan(),model.getKatasandi());
         callPasswordResponse=service.changePassword(requestBody);
         callPasswordResponse.enqueue(new Callback<ChangePasswordResponse>() {
             @Override
@@ -53,7 +53,7 @@ public class SettingPresenter {
 
     public void editProfile(final PelangganModel model)
     {
-        EditProfileRequest requestBody=new EditProfileRequest(model.getId_pelanggan(),model.getNo_telp(), model.getNama_lengkap(), model.getAlamat());
+        EditProfilePelangganRequest requestBody=new EditProfilePelangganRequest(model.getId_pelanggan(),model.getNo_telp(), model.getNama_lengkap(), model.getAlamat());
         callEditProfileResponse=service.editProfile(requestBody);
         callEditProfileResponse.enqueue(new Callback<EditProfileResponse>() {
             @Override

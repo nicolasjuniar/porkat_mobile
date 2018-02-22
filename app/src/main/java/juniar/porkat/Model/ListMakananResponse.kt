@@ -5,4 +5,4 @@ import com.google.gson.annotations.SerializedName
 /**
  * Created by Nicolas Juniar on 01/01/2018.
  */
-data class ListMakananResponse(@SerializedName("listmakanan") val listmakanan:ArrayList<MakananModel>)
+data class ListMakananResponse(@SerializedName("listmenu") val listmenu:ArrayList<MakananModel>)

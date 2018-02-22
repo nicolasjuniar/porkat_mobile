@@ -68,7 +68,7 @@
             android:tint="@color/White"
             android:id="@+id/img_btn_done"
             android:text="ulas"
-            android:background="@drawable/capsule_button"/>
+            android:background="@drawable/rounded_button"/>
 
         <ImageButton
             android:layout_alignParentRight="true"
@@ -80,7 +80,7 @@
             android:tint="@color/White"
             android:id="@+id/img_btn_cancel"
             android:text="ulas"
-            android:background="@drawable/capsule_button"/>
+            android:background="@drawable/rounded_button"/>
     </RelativeLayout>
 
 </RelativeLayout>

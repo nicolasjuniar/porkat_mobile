@@ -71,7 +71,7 @@
                 android:text="Masuk"
                 android:id="@+id/btn_login"
                 android:textAllCaps="false"
-                android:background="@drawable/capsule_button"
+                android:background="@drawable/rounded_button"
                 android:textColor="@color/White"/>
 
             <TextView

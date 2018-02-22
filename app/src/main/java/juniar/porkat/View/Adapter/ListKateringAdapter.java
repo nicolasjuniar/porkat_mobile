@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 
@@ -66,7 +67,7 @@ public class ListKateringAdapter extends RecyclerView.Adapter<ListKateringAdapte
         holder.katering=model;
         holder.tv_fullname.setText(model.getNama_katering());
         holder.tv_address.setText(model.getAlamat());
-        holder.tv_rating.setText(String.valueOf(model.getRating()));
+        holder.rating.setRating(model.getRating());
         Picasso.with(context).load(base_url+"foto/katering/"+model.getFoto()).fit().into(holder.img_photokatering);
         kateringLocation.setLongitude(model.getLongitude());
         kateringLocation.setLatitude(model.getLatitude());
@@ -92,8 +93,8 @@ public class ListKateringAdapter extends RecyclerView.Adapter<ListKateringAdapte
         TextView tv_fullname;
         @BindView(R.id.tv_address)
         TextView tv_address;
-        @BindView(R.id.tv_rating)
-        TextView tv_rating;
+        @BindView(R.id.rating)
+        RatingBar rating;
         @BindView(R.id.tv_distance)
         TextView tv_distance;
 

@@ -46,7 +46,7 @@
             android:name=".View.Activity.DetailKateringActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.Activity.ChangePasswordActivity"
+            android:name=".View.Activity.ChangePasswordPelangganActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View.Activity.EditProfileActivity"
@@ -82,7 +82,8 @@
         <activity
             android:name=".View.Activity.RegisterKateringActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TesActivity">
+        <activity android:name=".View.Activity.ChangePasswordKateringActivity"
+            android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
     </application>

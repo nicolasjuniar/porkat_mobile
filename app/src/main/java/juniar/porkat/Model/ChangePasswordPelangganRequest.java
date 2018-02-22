@@ -6,13 +6,13 @@ import com.google.gson.annotations.SerializedName;
  * Created by Nicolas Juniar on 19/11/2017.
  */
 
-public class ChangePasswordRequest {
+public class ChangePasswordPelangganRequest {
     @SerializedName("id_pelanggan")
     private int id_pelanggan;
     @SerializedName("katasandi")
     private String katasandi;
 
-    public ChangePasswordRequest(int id_pelanggan, String katasandi) {
+    public ChangePasswordPelangganRequest(int id_pelanggan, String katasandi) {
         this.id_pelanggan = id_pelanggan;
         this.katasandi = katasandi;
     }

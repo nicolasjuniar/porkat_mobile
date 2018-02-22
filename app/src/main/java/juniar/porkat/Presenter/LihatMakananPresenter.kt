@@ -23,9 +23,8 @@ class LihatMakananPresenter(listener:LihatMakananListener)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        {result-> listener.onGetListMakanan(false,result.listmakanan,null)},
+                        {result-> listener.onGetListMakanan(false,result.listmenu,null)},
                         {error->listener.onGetListMakanan(true,null,error)}
                 )
-
     }
 }

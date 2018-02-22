@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import juniar.porkat.Model.PelangganModel;
-import juniar.porkat.Presenter.SettingPresenter;
+import juniar.porkat.Presenter.SettingPelangganPresenter;
 import juniar.porkat.R;
 import juniar.porkat.Utils.PreferenceHelper;
 import juniar.porkat.View.Interface.SettingListener;
@@ -27,7 +27,7 @@ import juniar.porkat.View.Interface.SettingListener;
  * Created by Nicolas Juniar on 03/11/2017.
  */
 
-public class ChangePasswordActivity extends AppCompatActivity implements SettingListener {
+public class ChangePasswordPelangganActivity extends AppCompatActivity implements SettingListener {
 
     @BindView(R.id.et_username)
     EditText et_username;
@@ -43,7 +43,7 @@ public class ChangePasswordActivity extends AppCompatActivity implements Setting
     ProgressDialog progressDialog;
     PreferenceHelper preferences;
     private PelangganModel pelanggan;
-    SettingPresenter presenter;
+    SettingPelangganPresenter presenter;
     PelangganModel model;
 
     @Override
@@ -55,7 +55,7 @@ public class ChangePasswordActivity extends AppCompatActivity implements Setting
         getSupportActionBar().setTitle("Ubah katasandi");
 
         preferences=PreferenceHelper.getInstance(getApplicationContext());
-        presenter=new SettingPresenter(this,preferences);
+        presenter=new SettingPelangganPresenter(this,preferences);
 
         model=new Gson().fromJson(preferences.getString("profile_pelanggan",""),PelangganModel.class);
 
@@ -80,7 +80,7 @@ public class ChangePasswordActivity extends AppCompatActivity implements Setting
                 {
                     if(progressDialog ==null)
                     {
-                        progressDialog = new ProgressDialog(ChangePasswordActivity.this);
+                        progressDialog = new ProgressDialog(ChangePasswordPelangganActivity.this);
                         progressDialog.setMessage("Mengubah katasandi...");
                         progressDialog.setCancelable(false);
                     }

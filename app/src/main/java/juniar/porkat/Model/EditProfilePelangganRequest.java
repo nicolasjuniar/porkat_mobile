@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by Nicolas Juniar on 19/11/2017.
  */
 
-public class EditProfileRequest {
+public class EditProfilePelangganRequest {
     @SerializedName("id_pelanggan")
     private int id_pelanggan;
     @SerializedName("no_telp")
@@ -16,7 +16,7 @@ public class EditProfileRequest {
     @SerializedName("alamat")
     private String alamat;
 
-    public EditProfileRequest(int id_pelanggan, String no_telp, String nama_lengkap, String alamat) {
+    public EditProfilePelangganRequest(int id_pelanggan, String no_telp, String nama_lengkap, String alamat) {
         this.id_pelanggan = id_pelanggan;
         this.no_telp = no_telp;
         this.nama_lengkap = nama_lengkap;
